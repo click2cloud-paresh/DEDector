@@ -179,7 +179,7 @@ class DEDector:
                     continue
                 signals.append((signal_value / 3.0))
                 times.append(frame_ / 30.0)
-            except:
+            except Exception as e:
                 continue
         break_time = frame / 30.0
 
@@ -215,7 +215,7 @@ class DEDector:
                 else:
                     return False
 
-        except:
+        except Exception as e:
             return False
 
 
@@ -329,8 +329,8 @@ class DEDector:
                 frames_to_process.append(frame_count + 1)
 
 
-            except:
-                logging.error("Error occured while processing frame: {}".format(frame_count))
+            except Exception as e:
+                logging.error("Error occured while processing frame: {}: {}".format(frame_count, e), exc_info=True)
                 continue
 
         mean_sharpness = self.calculate_video_sharpness(start_frame, end_frame, out_dir)
@@ -363,8 +363,8 @@ class DEDector:
                 frames_to_process.append(frame_count + 1)
 
 
-            except:
-                logging.error("Error occured while processing frame: {}".format(frame_count))
+            except Exception as e:
+                logging.error("Error occured while processing frame: {}: {}".format(frame_count, e), exc_info=True)
                 continue
 
         logging.info("Processed {} frames from the video, collating breaks".format(len(frames_to_process)))

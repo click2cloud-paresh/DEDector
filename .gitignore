@@ -1,2 +1,6 @@
 venv/*
 *.pyc
+.venv/
+results/
+test_videos/
+src/video_processor.py.backup
